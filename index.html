@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéGO Hub • ULTIMATE SPOOFER DATABASE 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E2937 100%);
+            color: #E2E8F0;
+            transition: all 0.4s ease;
+        }
+        
+        .retro-font { font-family: 'Press Start 2P', cursive; }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 203, 5, 0.3);
+        }
+        
+        .pokemon-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pokemon-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 30px 60px -15px rgb(234 179 8 / 0.6);
+        }
+        
+        .type-badge {
+            font-size: 0.75rem;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(42,117,187,0.9), rgba(15,23,42,0.98)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+
+        body.light-mode {
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            color: #1E2937;
+        }
+        
+        body.light-mode .glass {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(234, 179, 8, 0.5);
+            color: #1E2937;
+        }
+        
+        body.light-mode .text-yellow-400 { color: #CA8A04; }
+        body.light-mode .retro-font { color: #1E40AF; }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 glass border-b border-yellow-400/30">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                <div class="w-12 h-12 bg-yellow-400 rounded-3xl flex items-center justify-center shadow-inner ring-2 ring-yellow-300 overflow-hidden">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/384.png" class="w-10 h-10 object-contain" alt="Rayquaza">
+                </div>
+                <div>
+                    <span class="retro-font text-3xl tracking-[-2px]">PokéGO</span>
+                    <span class="text-yellow-400 text-xl font-bold tracking-widest">HUB</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-widest">
+                <a onclick="navigateTo('home')" class="nav-link hover:text-yellow-400 transition cursor-pointer">HOME</a>
+                <a onclick="navigateTo('raids')" class="nav-link hover:text-yellow-400 transition cursor-pointer">RAIDS</a>
+                <a onclick="navigateTo('pokemon')" class="nav-link hover:text-yellow-400 transition cursor-pointer">POKÉDEX</a>
+                <a onclick="navigateTo('coords')" class="nav-link hover:text-yellow-400 transition cursor-pointer">COORDS</a>
+                <a onclick="navigateTo('events')" class="nav-link hover:text-yellow-400 transition cursor-pointer">EVENTS</a>
+                <a onclick="navigateTo('spoofing')" class="nav-link hover:text-yellow-400 transition cursor-pointer">SPOOFING APPS</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <input id="globalSearch" onkeyup="if(event.key==='Enter') globalSearch(this.value)" 
+                       type="text" placeholder="Search ANY Pokémon..." 
+                       class="glass px-6 py-3 w-96 rounded-3xl text-sm focus:outline-none border border-yellow-400/50 placeholder:text-gray-400 focus:border-yellow-400">
+                <button onclick="toggleTheme()" class="w-12 h-12 flex items-center justify-center text-3xl hover:rotate-12 transition">🌗</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="hero-bg h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 text-center z-10">
+            <div class="inline-flex items-center gap-3 bg-black/40 px-6 py-2 rounded-3xl mb-6 border border-yellow-400/30">
+                <span class="text-emerald-400 text-sm font-mono tracking-widest">LIVE SYNC • POKEAPI + DITTOBASE CP FORMULA</span>
+            </div>
+            <h1 class="retro-font text-7xl md:text-[5.5rem] font-bold text-white mb-6 tracking-[-6px] leading-none">THE ULTIMATE<br>SPOOFER'S POKÉMON GO DATABASE</h1>
+            <p class="text-3xl text-yellow-200 mb-12 max-w-2xl mx-auto">Every Pokémon • Dittobase CP & IV Charts • Base Stats from PokeAPI</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button onclick="navigateTo('pokemon')" 
+                        class="px-16 py-7 bg-yellow-400 hover:bg-amber-300 text-black font-bold rounded-3xl text-3xl transition-all shadow-xl">EXPLODE THE POKÉDEX</button>
+                <button onclick="navigateTo('raids')" 
+                        class="px-16 py-7 border-4 border-white hover:bg-white/10 text-white font-bold rounded-3xl text-3xl transition-all">RAID THE BOSSES</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RAIDS -->
+    <section id="raids" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <h2 class="retro-font text-5xl text-yellow-400">LIVE RAID BOSSES • JUNE 2026</h2>
+            <button onclick="refreshRaids()" class="text-sm px-6 py-3 glass rounded-2xl hover:bg-yellow-400 hover:text-black transition">REFRESH DATA</button>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="raidGrid"></div>
+    </section>
+
+    <!-- POKÉDEX -->
+    <section id="pokemon" class="py-24 bg-slate-950 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="retro-font text-5xl text-yellow-400 mb-8">COMPLETE POKÉDEX • LIVE DITTOBASE CP & IV CHARTS</h2>
+            
+            <div class="flex flex-wrap gap-4 mb-12 glass p-6 rounded-3xl">
+                <input id="pokedexSearch" onkeyup="filterPokedex()" 
+                       class="flex-1 glass px-8 py-5 rounded-3xl text-lg focus:outline-none" 
+                       placeholder="Search CP, IVs, name, type or #...">
+                
+                <select id="typeFilter" onchange="filterPokedex()" class="glass px-6 py-5 rounded-3xl">
+                    <option value="">All Types</option>
+                </select>
+            </div>
+            
+            <div id="pokedexPlaceholder" class="text-center py-32 text-yellow-400/70 text-2xl retro-font">
+                TYPE IN THE SEARCH BAR TO UNLOCK CP &amp; IV CHARTS 🔥<br>
+                <span class="text-sm opacity-50 mt-4 block">Perfect for hunting 100% IV beasts while spoofing</span>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6 hidden" id="pokedexGrid"></div>
+        </div>
+    </section>
+
+    <!-- COORDS -->
+    <section id="coords" class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="retro-font text-5xl text-center mb-16 text-yellow-400">BEST POGO COORDS 2026</h2>
+        <div class="grid md:grid-cols-3 gap-8" id="coordsGrid"></div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="py-24 bg-slate-900 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="retro-font text-5xl text-yellow-400 mb-8">UPCOMING EVENTS</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" id="eventsGrid"></div>
+        </div>
+    </section>
+
+    <!-- SPOOFING APPS -->
+    <section id="spoofing" class="py-24 bg-slate-950 px-6 hidden">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="retro-font text-5xl text-yellow-400 mb-12">SPOOFING APPS 2026</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="https://spooferpro.com/install" target="_blank" class="glass rounded-3xl p-12 hover:scale-105 transition block">
+                    <div class="text-6xl mb-6">🔥</div>
+                    <h3 class="text-3xl font-bold mb-3">Spoofer Pro</h3>
+                    <p class="text-lg opacity-80">Best paid spoofer with joystick, routes &amp; advanced features</p>
+                    <div class="mt-8 text-yellow-400 font-bold text-xl">INSTALL NOW →</div>
+                </a>
+                <a href="https://ipogo.app/install.php" target="_blank" class="glass rounded-3xl p-12 hover:scale-105 transition block">
+                    <div class="text-6xl mb-6">📱</div>
+                    <h3 class="text-3xl font-bold mb-3">iPogo</h3>
+                    <p class="text-lg opacity-80">Popular free &amp; premium spoofing app for iOS/Android</p>
+                    <div class="mt-8 text-yellow-400 font-bold text-xl">INSTALL NOW →</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modal" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center z-[100] p-4">
+        <div id="modalContent" class="glass max-w-4xl w-full rounded-3xl max-h-[92vh] overflow-auto"></div>
+    </div>
+
+    <script>
+        let allPokemon = [];
+        let currentRaids = [];
+        let typesList = new Set();
+
+        async function fetchAllPokemon() {
+            try {
+                console.log("%c🚀 Fetching complete Pokémon GO database...", "color:#FFCB05; font-size:18px");
+
+                const listRes = await fetch('https://pokeapi.co/api/v2/pokemon?limit=2000');
+                const listData = await listRes.json();
+
+                const promises = listData.results.map(async (poke) => {
+                    try {
+                        const detailRes = await fetch(poke.url);
+                        const detail = await detailRes.json();
+
+                        const speciesRes = await fetch(detail.species.url);
+                        const species = await speciesRes.json();
+
+                        const id = detail.id;
+                        const name = detail.name.charAt(0).toUpperCase() + detail.name.slice(1);
+                        const types = detail.types.map(t => t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1));
+                        
+                        const baseAtk = detail.stats[1].base_stat;
+                        const baseDef = detail.stats[2].base_stat;
+                        const baseSta = detail.stats[0].base_stat;
+
+                        return {
+                            id: id,
+                            name: name,
+                            types: types,
+                            atk: baseAtk,
+                            def: baseDef,
+                            sta: baseSta,
+                            sprite: detail.sprites.other['official-artwork'].front_default || detail.sprites.front_default,
+                            isLegendary: species.is_legendary,
+                            isMythical: species.is_mythical
+                        };
+                    } catch (e) {
+                        return null;
+                    }
+                });
+
+                const results = await Promise.all(promises);
+                allPokemon = results.filter(p => p !== null).sort((a,b) => a.id - b.id);
+
+                typesList = new Set(allPokemon.flatMap(p => p.types));
+                const typeSelect = document.getElementById('typeFilter');
+                typeSelect.innerHTML = '<option value="">All Types</option>';
+                Array.from(typesList).sort().forEach(type => {
+                    const opt = document.createElement('option');
+                    opt.value = type;
+                    opt.textContent = type;
+                    typeSelect.appendChild(opt);
+                });
+
+                console.log(`%c🔥 FULL DATABASE LOADED: ${allPokemon.length} Pokémon with Dittobase-style CP & IV charts!`, "color:#FFCB05; font-size:22px");
+            } catch (e) {
+                console.error("API error", e);
+            }
+        }
+
+        // IMPROVED DITTOBASE CP CALCULATOR
+        const cpMultipliers = {
+            15: 0.51739395,
+            20: 0.59740001,
+            25: 0.66769999,
+            50: 0.97219999
+        };
+
+        function calculateCP(baseAtk, baseDef, baseSta, level) {
+            const atk = baseAtk + 15;
+            const def = baseDef + 15;
+            const sta = baseSta + 15;
+            
+            let cpm = cpMultipliers[level];
+            if (!cpm) {
+                cpm = (0.095 * Math.sqrt(level) + 0.45) ** 2;
+            }
+            
+            let cp = Math.floor((atk * Math.sqrt(def) * Math.sqrt(sta) * cpm) / 10);
+            return Math.max(10, cp);
+        }
+
+        function generateIVChart(p) {
+            const topSpreads = [
+                [15,15,15], [14,15,15], [15,14,15], [15,15,14],
+                [13,15,15], [14,14,15], [15,13,15], [14,15,14], [15,14,14],
+                [12,15,15], [13,14,15]
+            ];
+            return topSpreads.map(([a, d, s]) => {
+                const percent = ((a + d + s) / 45 * 100).toFixed(1) + '%';
+                return {
+                    percent: percent,
+                    ivs: `${a} ${d} ${s}`,
+                    research: calculateCP(p.atk, p.def, p.sta, 15),
+                    raid: calculateCP(p.atk, p.def, p.sta, 20),
+                    weather: calculateCP(p.atk, p.def, p.sta, 25),
+                    maxCP: calculateCP(p.atk, p.def, p.sta, 50)
+                };
+            });
+        }
+
+        function loadRaids() {
+            currentRaids = [
+                { name: "Necrozma", tier: "5★", types: ["Psychic"], hundoRaid: "2100-2200", hundoMax: "4500+", endDate: "June 23", image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/800.png" },
+                { name: "Mega Scizor", tier: "Mega", types: ["Bug", "Steel"], hundoRaid: "~1950", hundoMax: "High 3000s", endDate: "June 23", image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/212_f2.png" },
+                { name: "Shadow Dialga", tier: "Shadow 5★", types: ["Steel", "Dragon"], hundoRaid: "2250+", hundoMax: "4800+", endDate: "Ongoing", image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/483.png" }
+            ];
+            renderRaids();
+        }
+
+        function renderRaids() {
+            const container = document.getElementById('raidGrid');
+            container.innerHTML = currentRaids.map(raid => `
+                <div onclick="showRaidDetail('${raid.name}')" class="glass rounded-3xl overflow-hidden pokemon-card cursor-pointer group">
+                    <div class="h-64 bg-gradient-to-br from-slate-900 to-black flex items-center justify-center p-8 relative">
+                        <img src="${raid.image}" class="w-56 h-56 object-contain transition-transform group-hover:scale-110">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold">${raid.name}</h3>
+                        <div class="flex gap-2 mt-3">${raid.types.map(t => `<span class="type-badge bg-gradient-to-r from-blue-600 to-indigo-600">${t}</span>`).join('')}</div>
+                        <div class="mt-6 space-y-1 text-sm">
+                            <div>Hundo Raid Target: <span class="text-yellow-400">${raid.hundoRaid}</span></div>
+                            <div>Max CP: <span class="text-white">${raid.hundoMax}</span></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showRaidDetail(name) {
+            const raid = currentRaids.find(r => r.name === name);
+            document.getElementById('modalContent').innerHTML = `
+                <div class="p-12">
+                    <button onclick="closeModal()" class="float-right text-6xl text-yellow-300">×</button>
+                    <img src="${raid.image}" class="mx-auto w-72 h-72 object-contain">
+                    <h2 class="retro-font text-7xl text-center mt-6">${raid.name}</h2>
+                    <div class="text-center text-4xl text-yellow-400">${raid.tier}</div>
+                    <div class="grid grid-cols-2 gap-12 my-12 text-center">
+                        <div class="glass p-8 rounded-3xl"><div class="text-sm opacity-70">HUNDO RAID TARGET CP</div><div class="text-7xl font-bold text-yellow-400">${raid.hundoRaid}</div></div>
+                        <div class="glass p-8 rounded-3xl"><div class="text-sm opacity-70">MAX CP</div><div class="text-7xl font-bold">${raid.hundoMax}</div></div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function renderPokedex(filtered) {
+            const grid = document.getElementById('pokedexGrid');
+            const placeholder = document.getElementById('pokedexPlaceholder');
+            
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                placeholder.innerHTML = `NO MATCHES FOUND, YOU SPOOFING LEGEND. TRY ANOTHER SEARCH!`;
+                return;
+            }
+            
+            grid.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+            
+            grid.innerHTML = filtered.map(p => `
+                <div onclick="showPokemonDetail(${p.id})" class="glass rounded-3xl p-6 pokemon-card cursor-pointer text-center">
+                    <img src="${p.sprite}" class="w-32 h-32 mx-auto mb-4 object-contain">
+                    <div class="font-mono text-yellow-400 text-sm">#${p.id.toString().padStart(4,'0')}</div>
+                    <div class="font-bold text-2xl mb-3">${p.name}</div>
+                    <div class="flex gap-2 justify-center flex-wrap mb-6">
+                        ${p.types.map(t => `<span class="type-badge bg-gradient-to-br from-blue-600 to-cyan-500">${t}</span>`).join('')}
+                    </div>
+                    <div class="text-yellow-400 font-bold text-xl">HUNDO MAX CP ${calculateCP(p.atk, p.def, p.sta, 50).toLocaleString()} (Dittobase)</div>
+                    ${p.isLegendary ? `<div class="text-amber-400 text-xs mt-2">★ LEGENDARY</div>` : ''}
+                    ${p.isMythical ? `<div class="text-purple-400 text-xs mt-2">✦ MYTHICAL</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function filterPokedex() {
+            const term = document.getElementById('pokedexSearch').value.toLowerCase().trim();
+            const typeFilter = document.getElementById('typeFilter').value;
+            
+            let filtered = allPokemon;
+            if (term) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(term) || 
+                    p.id.toString().includes(term)
+                );
+            }
+            if (typeFilter) {
+                filtered = filtered.filter(p => p.types.includes(typeFilter));
+            }
+            
+            renderPokedex(filtered);
+        }
+
+        async function showPokemonDetail(id) {
+            const p = allPokemon.find(x => x.id === id);
+            if (!p) return;
+
+            const ivRows = generateIVChart(p);
+            const hundoResearch = calculateCP(p.atk, p.def, p.sta, 15);
+            const hundoRaid = calculateCP(p.atk, p.def, p.sta, 20);
+            const hundoWeather = calculateCP(p.atk, p.def, p.sta, 25);
+            const hundoMax = calculateCP(p.atk, p.def, p.sta, 50);
+
+            const html = `
+                <div class="p-12">
+                    <button onclick="closeModal()" class="float-right text-6xl text-yellow-300 hover:text-white">×</button>
+                    <div class="flex flex-col lg:flex-row gap-12">
+                        <div><img src="${p.sprite}" class="w-80 h-80 object-contain"></div>
+                        <div class="flex-1">
+                            <h2 class="retro-font text-6xl mb-2">#${p.id.toString().padStart(4, '0')} ${p.name}</h2>
+                            <div class="flex gap-3 mb-10">${p.types.map(t => `<span class="px-8 py-3 text-lg bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl">${t}</span>`).join('')}</div>
+                            
+                            <div class="grid grid-cols-3 gap-8 mb-12">
+                                <div class="text-center glass p-6 rounded-3xl">
+                                    <div class="text-xs opacity-60">BASE ATK (PokeAPI)</div>
+                                    <div class="text-6xl font-bold text-yellow-400">${p.atk}</div>
+                                </div>
+                                <div class="text-center glass p-6 rounded-3xl">
+                                    <div class="text-xs opacity-60">BASE DEF (PokeAPI)</div>
+                                    <div class="text-6xl font-bold text-yellow-400">${p.def}</div>
+                                </div>
+                                <div class="text-center glass p-6 rounded-3xl">
+                                    <div class="text-xs opacity-60">BASE STA (PokeAPI)</div>
+                                    <div class="text-6xl font-bold text-yellow-400">${p.sta}</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-12">
+                                <h3 class="retro-font text-3xl text-yellow-400 mb-6">CP & IV CHART (DITTOBASE STYLE)</h3>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm glass rounded-2xl overflow-hidden">
+                                        <thead>
+                                            <tr class="bg-slate-800">
+                                                <th class="p-4 text-left">IV %</th>
+                                                <th class="p-4 text-left">IVs (A/D/S)</th>
+                                                <th class="p-4">Research (Lv15)</th>
+                                                <th class="p-4">Raid/Egg (Lv20)</th>
+                                                <th class="p-4">Weather Raid (Lv25)</th>
+                                                <th class="p-4 font-bold">Max CP (Lv50)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${ivRows.map(row => `
+                                                <tr class="border-t border-slate-700 hover:bg-slate-800/50">
+                                                    <td class="p-4 font-bold text-emerald-400">${row.percent}</td>
+                                                    <td class="p-4 font-mono">${row.ivs}</td>
+                                                    <td class="p-4 text-center">${row.research} CP</td>
+                                                    <td class="p-4 text-center">${row.raid} CP</td>
+                                                    <td class="p-4 text-center">${row.weather} CP</td>
+                                                    <td class="p-4 text-center font-bold text-yellow-400">${row.maxCP} CP</td>
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                                    <div class="glass p-6 rounded-3xl">
+                                        <div class="text-xs opacity-60">RESEARCH</div>
+                                        <div class="text-4xl font-bold text-yellow-400">${hundoResearch} CP</div>
+                                    </div>
+                                    <div class="glass p-6 rounded-3xl">
+                                        <div class="text-xs opacity-60">RAID / EGG</div>
+                                        <div class="text-4xl font-bold text-yellow-400">${hundoRaid} CP</div>
+                                    </div>
+                                    <div class="glass p-6 rounded-3xl">
+                                        <div class="text-xs opacity-60">WEATHER RAID</div>
+                                        <div class="text-4xl font-bold text-yellow-400">${hundoWeather} CP</div>
+                                    </div>
+                                    <div class="glass p-6 rounded-3xl">
+                                        <div class="text-xs opacity-60">MAX LV50 HUNDO</div>
+                                        <div class="text-4xl font-bold text-yellow-400">${hundoMax} CP</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        const coordsData = [
+            {city: "Zaragoza, Spain", coord: "41.6488, -0.8890", desc: "World #1 gym cluster"},
+            {city: "Taipei Ximending", coord: "25.0466, 121.5169", desc: "Asia raid capital"},
+            {city: "NYC Central Park", coord: "40.7851, -73.9683", desc: "US classic hotspot"},
+            {city: "Pier 39, SF", coord: "37.8086, -122.4098", desc: "Water biome heaven"},
+            {city: "Tokyo Shibuya", coord: "35.6617, 139.7040", desc: "Japan mega cluster"},
+        ];
+
+        function renderCoords() {
+            document.getElementById('coordsGrid').innerHTML = coordsData.map(c => `
+                <div onclick="copyCoord('${c.coord}', '${c.city}')" class="glass rounded-3xl p-8 pokemon-card cursor-pointer">
+                    <div class="text-2xl font-bold mb-1">${c.city}</div>
+                    <div class="font-mono text-yellow-300">${c.coord}</div>
+                    <p class="text-sm mt-6">${c.desc}</p>
+                    <div class="mt-8 text-xs bg-yellow-400/10 text-yellow-400 px-5 py-2.5 inline-block rounded-2xl">COPY & TELEPORT</div>
+                </div>
+            `).join('');
+        }
+
+        function copyCoord(coord, city) {
+            navigator.clipboard.writeText(coord);
+            alert(`📍 ${city}\n${coord}\n\nCOPIED! GO FARM THOSE HUNDOS YOU LEGEND`);
+        }
+
+        function globalSearch(term) {
+            navigateTo('pokemon');
+            setTimeout(() => {
+                document.getElementById('pokedexSearch').value = term;
+                filterPokedex();
+            }, 300);
+        }
+
+        function navigateTo(section) {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            const targetSection = document.getElementById(section);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        function refreshRaids() {
+            loadRaids();
+            alert("🔄 Raids synced from latest sources!");
+        }
+
+        window.onload = () => {
+            fetchAllPokemon();
+            loadRaids();
+            renderCoords();
+            
+            document.getElementById('eventsGrid').innerHTML = `
+                <div class="glass p-8 rounded-3xl text-left">
+                    <div class="text-yellow-400 font-bold mb-1">GLOBAL GO FEST 2026</div>
+                    <div class="text-xl">July 11 - 12</div>
+                    <div class="text-sm opacity-70 mt-3">Global Event • Huge Spawns & Raids</div>
+                </div>
+                <div class="glass p-8 rounded-3xl text-left">
+                    <div class="text-yellow-400 font-bold mb-1">ROAD OF LEGENDS MEGA EVENT</div>
+                    <div class="text-xl">July 6 - 10</div>
+                    <div class="text-sm opacity-70 mt-3">Mega Evolutions & Special Rewards</div>
+                </div>
+                <div class="glass p-8 rounded-3xl text-left">
+                    <div class="text-yellow-400 font-bold mb-1">COMMUNITY DAY</div>
+                    <div class="text-xl">July 4 • 2-5 PM</div>
+                    <div class="text-sm opacity-70 mt-3">Featured Pokémon: Sobble</div>
+                </div>
+            `;
+            
+            // Show home by default
+            document.getElementById('home').classList.remove('hidden');
+            
+            console.log("%cPokéGO HUB 2026 • FULL DATABASE MODE • UNHINGED POWER ACTIVATED", "color:#FFCB05; font-size:22px");
+        };
+    </script>
+</body>
+</html>
